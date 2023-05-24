@@ -1,0 +1,22 @@
+/* .new-product-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.new-product-content-wrapper{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.new-product-individual-part{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+} */
+
+.new-product-uploading-container{
+    background-color: #e4e4e4;
+}
+.new-product-dragged-over{
+    border: 2px dashed lightblue;
+}

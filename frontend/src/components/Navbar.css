@@ -1,0 +1,125 @@
+.navbar-wrapper{
+  display: flex;
+  justify-content: center;
+  padding: 3% 0;
+}
+.navbar-form{
+  width: 100%;
+  overflow: hidden;
+}
+.navbar-input{
+  border: none;
+  width: 100%;
+  font-size: 2rem;
+}
+.navbar-input[placeholder]{
+  padding-left: 16px;
+}
+.navbar-input:focus{
+  outline: none;
+}
+.navbar-container{
+  /* background-color: lightblue; */
+  height: 100px; /* Hardcoded for now */
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.navbar-search__submit-button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.navbar-search-container,
+.navbar-cart-container,
+.navbar-user-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar-search-container{
+  flex: 6;
+}
+.navbar-icons-container{
+  flex: 2;
+}
+.navbar-input{
+  height: 3rem;
+}
+.navbar-form--container{
+  padding: 0 3%;
+  gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px lightblue solid;
+  border-radius: 3rem;
+}
+.navbar-icons-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navbar-cart-container,
+.navbar-user-container{
+  position: relative;
+  padding: .5rem;
+}
+.navbar-cart-item-quantity{
+  position: absolute;
+  width: 1.2rem;
+  height: 1.2rem;
+  right: 0;
+  top: 0;
+  border: .1px solid #67cae1;
+  border-radius: 50%;
+  background-color: #67cae1;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .1rem;
+}
+.logout-button{
+  border: none;
+  background-color: transparent;
+  padding: .25rem .5rem;
+  color: #bc5b5b;
+  cursor: pointer;
+  transition: .2s ease;
+  &:hover{
+    color: red;
+  }
+}
+.currentUser-username{
+  padding: 0 .5rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+.auth-links{
+  padding: .25rem;
+  cursor: pointer;
+  transition: .2s ease;
+  font-size: 1.125rem;
+  &:hover{
+    color: rgb(29, 119, 149);
+  }
+}
+.user-icon{
+  padding: .25rem;
+}
+
+/* @@@@@@@@@@ Media breakpoints @@@@@@@@@@ */
+@media (max-width: 901px){
+  .navbar-container{
+    flex-direction: column;
+    gap:2rem;
+  }
+  .navbar-wrapper{
+    padding: 8% 0;
+  }
+}

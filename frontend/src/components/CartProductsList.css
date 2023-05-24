@@ -1,0 +1,102 @@
+
+
+.cart-products-page-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cart-products-list{
+  width: 100%;
+}
+.cart-products-page-wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
+}
+.cart-products-addtocart-container{
+  margin: 2rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.cart-products-addtocart-button{
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding: 1rem;
+  border: 2px solid lightblue;
+  border-radius: 2rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all .2s ease;
+  width: 100%;
+  &:hover{
+    background-color: lightblue;
+    color: white;
+  }
+  &:active{
+    transform: scale(1.02);
+  }
+}
+.button-disabled{
+  /* When the button is disabled */
+  pointer-events: none;
+
+}
+.cart-products-summary-container{
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
+  width: 30%;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem;
+  margin: 2rem 0;
+
+  /* Glassy background */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.4px);
+  -webkit-backdrop-filter: blur(15.4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.cart-products-summary-title{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.cart-products-summary-title-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.cart-products-summary-subtotal-container,
+.cart-products-summary-discount-container,
+.cart-products-summary-total-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+@media (max-width: 1201px){
+  .cart-products-summary-container{
+    width: 50%;
+  }
+}
+@media (max-width: 801px){
+  .cart-products-page-wrapper{
+    width: 90%;
+  }
+}
+@media (max-width: 601px){
+  .cart-products-summary-container{
+    width: 90%;
+  }
+}

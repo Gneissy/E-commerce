@@ -1,0 +1,78 @@
+
+.register-container{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.register-wrapper{
+  width: 50%;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+}
+.register-input{
+  padding: 1rem;
+  font-size: 1.2rem;
+  width: 50%;
+}
+.register-inputs-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.register-inputs-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+.register-verification-text{
+  font-size: 1.1rem;
+}
+.register-submit-button-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.register-to-login-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #f7f7f7; */
+  padding: 1rem 0;
+}
+.register-submit-button{
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding: 1rem;
+  border: 2px solid lightblue;
+  border-radius: 2rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all .2s ease;
+  width: 70%;
+  &:hover{
+    background-color: lightblue;
+    color: white;
+  }
+  &:active{
+    transform: scale(1.02);
+  }
+}
+@media (max-width: 801px){
+  .register-inputs-container{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .register-input{
+    width: 100%;
+  }
+}
+@media (max-width: 501px){
+  .register-wrapper{
+    width: 70%;
+  }
+}

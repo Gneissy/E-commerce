@@ -1,0 +1,163 @@
+.sp-img{
+  width: 500px;
+  height: 500px;
+}
+.sp-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2% 0;
+}
+.sp-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 70%;
+}
+.sp-image-wrapper{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sp-options{
+  gap: 1.5rem;
+  width: 100%;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 1rem 0;
+}
+.sp-details-wrapper{
+  flex: 1;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.sp-price-container{
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.sp-quantity-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.sp-addtocart-container{
+  margin: 2rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.sp-addtocart-button{
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding: 1rem;
+  border: 2px solid lightblue;
+  border-radius: 2rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all .2s ease;
+  width: 100%;
+  &:hover{
+    background-color: lightblue;
+    color: white;
+  }
+  &:active{
+    transform: scale(1.02);
+  }
+}
+.sp-heart{
+  padding: 1rem;
+  cursor: pointer;
+  color: #D14D72;
+}
+.sp-title{
+  font-size: 2rem;
+  line-height: 1.5;
+}
+.sp-description{}
+.sp-price{
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.sp-quantity-change{
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 2px solid lightblue;
+  border-radius: 50%;
+  transition: all .2s ease;
+
+  &:hover{
+    background-color: lightblue;
+    color: white;
+  }
+  &:active{
+    transform: scale(1.2);
+  }
+}
+.sp-quantity{
+  font-size: 1.2rem;
+}
+
+
+/* @@@@@@@@@@ Media breakpoints @@@@@@@@@@*/
+@media (max-width: 1200px){
+  .sp-wrapper{
+    width: 90%;
+  }
+  .sp-details-wrapper{
+    justify-content: center;
+    align-items: center;
+  }
+  .sp-price-container{
+    flex-direction: column;
+  }
+}
+@media (max-width: 1071px){
+  .sp-description{
+    width: 90%;
+  }
+  .sp-options{
+    justify-content: center;
+  }
+  .sp-title{
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 844px){
+  .sp-container{
+    margin-top: 10%;
+  }
+  .sp-title{
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .sp-description{
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 550px){
+  .sp-img{
+    width: 400px;
+    height: 400px;
+  }
+}
+@media (max-width: 450px){
+  .sp-img{
+    width: 250px;
+    height: 250px;
+  }
+}
