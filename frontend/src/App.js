@@ -33,6 +33,12 @@ function App(){
     return state.user.currentUser; // This is currentUser from redux store
   });
 
+  // Sending the user data into local storage, maybe i use redux-persist later on
+  localStorage.setItem('serteserUser', JSON.stringify(user));
+
+  // console.log(user?.isAdmin)
+
+  
   // useEffect(() => {
     // Retrieve the logged in state from localStorage when the component mounts
     // Fetching logged in state from local storage.
@@ -56,15 +62,18 @@ function App(){
   return(
     <Router>
       <Navbar />
-      <Link className = "link" to = "/cart">
-        <button> Go cart page</button>
-      </Link>
-      <Link className = "link" to = "/addnewproduct">
-        <button> Add new product</button>
-      </Link>
+
+      { user?.isAdmin && (
+        <Link className = "link" to = "/addnewproduct">
+          <button> Add new product</button>
+        </Link>
+        )
+      }
+
       <Link to = "/">
         <button> Main page "/"</button>
       </Link>
+      
       <Routes>
         <Route exact path = "/" element = {<ProductsList />} />
         <Route path = "/login" element = { 

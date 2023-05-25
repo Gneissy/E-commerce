@@ -1,8 +1,12 @@
 import axios from "axios";
 
 const MAIN_API_URL = "http://localhost:3001/api";
-const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDAzYTUxOTVhMTk0OTFlNDk3NTMyZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NDk1OTE4OCwiZXhwIjoxNjg1MDQ1NTg4fQ.-qw_asgJ6SpmaKEXtByJacr5Ntv6TxV5cJeiQOQBDQM";
+// const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDAzYTUxOTVhMTk0OTFlNDk3NTMyZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NTAxNTk1OCwiZXhwIjoxNjg1MTAyMzU4fQ.rZTnOiZ1DKgb1sn_F0U8gtY29OodEta0hQXx2cHrVvo";
 
+const user = JSON.parse(localStorage.getItem('serteserUser'));
+// console.log(user); // The big user object
+const TOKEN = user?.accessToken;
+// console.log(TOKEN); // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... like output
 
 // For public requests
 const publicRequest = axios.create({ baseURL: MAIN_API_URL });

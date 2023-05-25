@@ -76,12 +76,8 @@ function Login(){
             <p className = "login-failure-text">Username or password is wrong.</p> 
           }
         </div>
-
       </form>
-
     </div>
-
-
     </div>
   );
 }

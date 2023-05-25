@@ -3,10 +3,12 @@ const jwt = require ("jsonwebtoken");
 // This is gonna be a middleware func
 // Which verifies JWT Token
 const verifyToken = async function(req, res, next){
-  const authHeader = req.headers.token; // Not sure what this is // I guess it's for postman
+  // Takes the token from headers
+  const authHeader = req.headers.token; // it's for Postman
   if (authHeader){
     const token = authHeader.split(" ")[1]; // To be able to get token from postman
     // Bearer 812412j412ln4asd... Thats the " "
+    console.log(token);
     jwt.verify(token, process.env.JWT_SECRET, function(err, userData){
       if(!err){
         // I made verifiedUser up.

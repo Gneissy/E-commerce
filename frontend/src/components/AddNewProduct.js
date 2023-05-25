@@ -3,9 +3,19 @@ import { useState } from "react";
 import "./AddNewProduct.css";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from "../firebase";
-import { publicRequest } from "../reqMethods";
+import { publicRequest, userRequest } from "../reqMethods";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 function AddNewProduct(){
+
+    // Fetching current user from Redux store
+    // The object's "accessToken" property will be used 
+    // While sending headers: {TOKEN: ...}
+    const user = useSelector(function (state){
+        return state.user.currentUser;
+    });
+    // console.log(user); // Gives the current user
 
     // States
     const [title, setTitle] = useState("");
@@ -109,7 +119,7 @@ function AddNewProduct(){
                 // Handling successful upload
                 // An example output of downloadURL: https://firebasestorage.googleapis.com/...
                 // Here "downloadURL" is my new "src" that we use on recording in my database.
-                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
                     const product = {
                         title: title,
                         description: description,
@@ -120,8 +130,17 @@ function AddNewProduct(){
                         price: price
                     };
                     console.log(product); // It is a whole new product object.
-                    publicRequest.post("/products");
-                    // addProduct(product, dispatch);
+
+
+
+                    // TODO Send product and create a product in database.
+                    // TODO Problem here is to have an "unauthorized" error, due to token issues.
+                    // TODO For some reason, i couldn't handle using "userRequest", will check later on
+                    await axios.post("http://localhost:3001/api/products", product, {
+                        headers: { // Sending the token to prove i'm authorized //? solved this way
+                            TOKEN: `Bearer ${user.accessToken}`
+                          }
+                    });
                 });
             }
       );

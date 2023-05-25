@@ -46,6 +46,7 @@ router.get("/:id", async function(req, res){
 
 
 // Create New Product // Only admin can create new products // Works
+// TODO There should be verifyTokenAndCheckAdmin middleware
 router.post("/", verifyTokenAndCheckAdmin, async function(req, res){
   try{
     const newProduct = new Product( req.body ) ;

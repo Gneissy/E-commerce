@@ -5,49 +5,11 @@ import { useLocation } from "react-router-dom";
 import "./ProductsList.css";
 import axios from "axios";
 
-// const popularProducts = [{
-//         _id: 1,
-//         title: "tişörd",
-//         img: "https://d3o2e4jr3mxnm3.cloudfront.net/Mens-Jake-Guitar-Vintage-Crusher-Tee_68382_1_lg.png",
-//         price: 20,
-//         category: "ceket"
-//     },
-//     {
-//         _id: 2,
-//         title: "tişörd",
-//         img: "https://www.prada.com/content/dam/pradanux_products/U/UCS/UCS319/1YOTF010O/UCS319_1YOT_F010O_S_182_SLF.png",
-//         price: 550,
-//         category: "pantolon"
-//     },
-//     {
-//         _id: 3,
-//         title: "tişörd",
-//         img: "https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
-//         price: 50,
-//         category: "tshirt"
-//     },
-//     {
-//         _id: 4,
-//         title: "tişörd",
-//         img: "https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
-//         price: 10,
-//         category: "klavye"
-//     },
-//     {
-//         _id: 5,
-//         title: "tişörd",
-//         img: "https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
-//         price: 60,
-//         category: "fare"
-//     },
-// ]
-
-
 function ProductsList() {
 
+    const [products, setProducts] = useState([]);
     const [sort, setSort] = useState("");
     const [filters, setFilters] = useState({});
-    const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
 
     // console.log(location.pathname.split("/")[2]); // Example:  localhost:3001/products/electronic  // log output: "electronic"
@@ -123,8 +85,8 @@ function ProductsList() {
     }, [sort]);
 
 
-    console.log(filters); // Example output: {size: "L", color: "White"}
-    console.log(sort); // Example output: "popular"
+    // console.log(filters); // Example output: {size: "L", color: "White"}
+    // console.log(sort); // Example output: "popular"
 
     // Display "renderedProducts" which are many "ProductsShow" components
     // ********** Sorting cheapest needs changing to sth else and changing cheapest back, gonna check that **********
