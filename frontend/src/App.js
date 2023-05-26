@@ -20,6 +20,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import CartProductsList from "./components/CartProductsList";
 import SuccessPage from "./pages/Success";
+import RegisterSuccessPage from "./pages/RegisterSuccess";
 import AddNewProduct from "./components/AddNewProduct";
 
 import HomePage from "./pages/HomePage";
@@ -89,6 +90,7 @@ function App(){
         <Route path = "/products/:category" element = {<ProductsList />} />
         <Route path = "/product/:id" element = {<SingleProductShow />} />
         <Route path = "/success" element = {<SuccessPage />} />
+        <Route path = "/registersuccess" element = {<RegisterSuccessPage />} />
         <Route path = "/addnewproduct" element = {<AddNewProduct />} />
 
 

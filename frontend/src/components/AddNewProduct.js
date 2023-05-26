@@ -136,7 +136,7 @@ function AddNewProduct(){
                     // TODO Send product and create a product in database.
                     // TODO Problem here is to have an "unauthorized" error, due to token issues.
                     // TODO For some reason, i couldn't handle using "userRequest", will check later on
-                    await axios.post("http://localhost:3001/api/products", product, {
+                    await userRequest.post("/products", product, { // Could've used axios.post("http:localhost:3001/api/products")
                         headers: { // Sending the token to prove i'm authorized //? solved this way
                             TOKEN: `Bearer ${user.accessToken}`
                           }
