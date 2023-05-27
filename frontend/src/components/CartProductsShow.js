@@ -1,7 +1,9 @@
 import React from "react";
 import "./CartProductsShow.css"
+import { useSelector } from "react-redux";
 
-function CartProductsShow( {product} ){
+
+function CartProductsShow( {product, handlePlusClick, handleMinusClick, handleTrashClick} ){
 
 
   return (
@@ -21,10 +23,10 @@ function CartProductsShow( {product} ){
                 )}
             </div>
             <div className = "cart-products-quantity-container">
-              <i className = "cart-products-quantity-change fa-solid fa-minus" ></i>
+              <i className = "cart-products-quantity-change fa-solid fa-minus" onClick = { handleMinusClick } value = { product._id }></i>
               <p className = "cart-products-quantity"> {product.count} </p>
-              <i className = "cart-products-quantity-change fa-solid fa-plus" ></i>
-              <i className = "fa-sharp fa-solid fa-trash fa-2x"></i>
+              <i className = "cart-products-quantity-change fa-solid fa-plus" onClick = { handlePlusClick } value = { product._id }></i>
+              <i className = "fa-sharp fa-solid fa-trash trashbin" onClick = { handleTrashClick } value = { product._id }></i>
             </div>
             <div className = "cart-products-price-container">
               <p className = "cart-products-price-text"> {product.price * product.count} $ </p>

@@ -22,6 +22,7 @@ import CartProductsList from "./components/CartProductsList";
 import SuccessPage from "./pages/Success";
 import RegisterSuccessPage from "./pages/RegisterSuccess";
 import AddNewProduct from "./components/AddNewProduct";
+import Notification from "./components/Notification";
 
 import HomePage from "./pages/HomePage";
 import styled from "styled-components";
@@ -63,6 +64,9 @@ function App(){
   return(
     <Router>
       <Navbar />
+      <div className = "notification-container">
+        <Notification text = {"Welcome to my website!"} />
+      </div>
 
       { user?.isAdmin && (
         <Link className = "link" to = "/addnewproduct">

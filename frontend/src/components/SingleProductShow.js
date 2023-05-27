@@ -5,7 +5,8 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { publicRequest } from "../reqMethods";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../store/index";
+import { addProductToCart } from "../store/index";
+import Notification from "./Notification";
 
 function SingleProductShow(){
 
@@ -19,6 +20,9 @@ function SingleProductShow(){
   const [ product, setProduct ] = useState({});
   const [ color, setColor ] = useState("");
   const [ size, setSize ] = useState("");
+
+  // To show user little notifications like "you add X product into your cart"
+  const [notifications, setNotifications] = useState([]);
   
   const handleColorChange = function(event){
     setColor(event.target.value);
@@ -56,7 +60,7 @@ function SingleProductShow(){
 
   const handleAddCartClick = function(){
     //* Redux related code here
-    dispatch(addProduct(
+    dispatch(addProductToCart(
       // payload is here 
       // sending our local states to redux store
       {
@@ -66,8 +70,11 @@ function SingleProductShow(){
         size: size // and selected size property 
       }
     ));
-  }
 
+    // For notifications
+    const newNotification = `${count}x ${product.title} added to the cart.`;
+    setNotifications((previousNotifications) => [...previousNotifications, newNotification]);
+  }
 
   //** Temp */
   const colors = ["red", "blue", "lightblue"];
@@ -113,6 +120,11 @@ function SingleProductShow(){
     <div className = "sp-addtocart-container" >
       <button className = "sp-addtocart-button" onClick = {handleAddCartClick} type = "submit"> Add To Cart  </button>
       <i className ="sp-heart fa-regular fa-heart fa-2x"></i>
+      <div className = "notification-container">
+        {notifications.map((notification, index) => (
+            <Notification key={index} text={notification} />
+        ))}
+      </div>
     </div>
     </div>
     </div>

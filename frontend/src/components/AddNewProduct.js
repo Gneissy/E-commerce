@@ -154,53 +154,63 @@ function AddNewProduct(){
 
     return (
         <div className = "new-product-wrapper">
-            <form className = "new-product-content-wrapper">
-                <div className = "new-product-individual-part">
-                    <label>Title:</label>
-                    <input type = "text" name="title" value = {title} onChange = {handleTitleChange}></input>
-                </div>
-                <div className = "new-product-individual-part">
-                    <label>Description:</label>
-                    <input type = "text" name="description" value = {description} onChange = {handleDescriptionChange}></input>
-                </div>
-                <div className = "new-product-individual-part">
-                    <label>Img:</label>
-                    <div
-                        className={`new-product-drag-drop-area ${dragOver ? 'new-product-dragged-over' : ''}`}
-                        onDragOver={handleDragOver}
-                        onDragLeave={handleDragLeave}
-                        onDrop={handleDrop}
-                    >
-                        <input type="file" name="img" onChange={handleFileUpload} />
-                        {imgPreview ? (
-                            <img src={imgPreview} alt="Preview" style={{ maxWidth: '200px', marginTop: '10px' }} />
-                        ) : (
-                            <div className = "new-product-uploading-container">
-                                <p>Drag and drop image file here, or click to select file</p>
-                                <i class="fa-solid fa-file-arrow-up fa-4x"></i>
-                            </div>
-                        )}
+
+
+            <form className = "new-product-form">
+
+                    <h1> Create a new product</h1>
+                    <div className = "new-product-individual-part">
+                        <label className = "new-product-label">Title:</label>
+                        <input type = "text" name="title" placeholder="Blaze designed car" value = {title} onChange = {handleTitleChange}></input>
                     </div>
-                </div>
-                <div className = "new-product-individual-part">
-                    <label>Categories:</label>
-                    <input type = "text" name="categories" value={categories} onChange = {handleCategoriesChange}></input>
-                </div>
-                <div className = "new-product-individual-part">
-                    <label>Size:</label>
-                    <input type = "text" name="size" value = {size} onChange={handleSizeChange}></input>
-                </div>
-                <div className = "new-product-individual-part">
-                    <label>Color:</label>
-                    <input type = "text" name="color" value = {color} onChange = {handleColorChange}></input>
-                </div>
-                <div className = "new-product-individual-part">
-                    <label>Price:</label>
-                    <input type = "number" name="price" value = {price} onChange = {handlePriceChange}></input>
-                </div>
-                <div className = "new-product-individual-part">
-                    <button type = "submit" name="submit" onClick = {handleCreateProduct}> Create the product</button>
-                </div>
+                    <div className = "new-product-individual-part">
+                        <label className = "new-product-label">Description:</label>
+                        <textarea type = "text" name="description" placeholder="A real cool looking t-shirt that'll blow your mind." value = {description} onChange = {handleDescriptionChange}></textarea>
+                    </div>
+                    <div className = "new-product-individual-part">
+                        <label className = "new-product-label">Categories:</label>
+                        <input type = "text" name="categories" placeholder="t-shirt, clothes" value={categories} onChange = {handleCategoriesChange}></input>
+                    </div>
+                    <div className = "new-product-individual-part">
+                        <label className = "new-product-label">Size:</label>
+                        <input type = "text" name="size" placeholder="xs" value = {size} onChange={handleSizeChange}></input>
+                    </div>
+                    <div className = "new-product-individual-part">
+                        <label className = "new-product-label">Color:</label>
+                        <input type = "text" name="color" placeholder="red" value = {color} onChange = {handleColorChange}></input>
+                    </div>
+                    <div className = "new-product-individual-part">
+                        <label className = "new-product-label">Price:</label>
+                        <input type = "number" name="price" placeholder="100" value = {price} onChange = {handlePriceChange}></input>
+                    </div>
+                    <div className = "new-product-individual-part">
+                        <label className = "new-product-label">Img:</label>
+                        <div
+                            className={`new-product-drag-drop-area ${dragOver ? 'new-product-dragged-over' : ''}`}
+                            onDragOver={handleDragOver}
+                            onDragLeave={handleDragLeave}
+                            onDrop={handleDrop}
+                        >
+                            <input type="file" name="img" onChange={handleFileUpload} />
+                            {imgPreview 
+                                ? (
+                                <div className = "new-product-image-preview-container">
+                                    <img src={imgPreview} alt="Preview" style={{ maxWidth: '200px', marginTop: '10px' }} />
+                                </div>
+                                ) 
+                                : (
+                                <div className = "new-product-uploading-container">
+                                    <p className = "new-product-uploading-text" >Drag and drop image file here.</p>
+                                    <i class="fa-solid fa-file-arrow-up fa-4x"></i>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+
+                    <div className = "new-product-create-button-container">
+                        <button className = "new-product-add-button" type = "submit" name="submit" onClick = {handleCreateProduct}> Create </button>
+                    </div>
             </form>
         </div>
     );

@@ -2,7 +2,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 // Bringing in reducers
-import {cartReducer, addProduct } from "./slices/cartSlice";
+import {cartReducer, addProductToCart, incrementProductCount, decrementProductCount, deleteProductFromCart } from "./slices/cartSlice";
 import {userReducer, loginBegin, loginSuccessful, loginFailure, logout } from "./slices/userSlice";
 
 
@@ -20,7 +20,10 @@ const store = configureStore({
 // Exporting both store and reducers
 export {
     store,
-    addProduct,
+    addProductToCart,
+    incrementProductCount,
+    decrementProductCount,
+    deleteProductFromCart,
     loginBegin,
     loginSuccessful,
     loginFailure,

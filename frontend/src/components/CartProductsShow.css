@@ -100,6 +100,17 @@
   flex-direction: row;
   gap: .5rem;
 }
+.trashbin{
+  /* border: 1px solid red;
+  border-radius: .5rem; */
+  font-size: 1.5rem;
+  padding: .5rem;
+  transition: .5s all ease;
+  &:hover{
+    color: #bc5b5b;
+    cursor: pointer;
+  }
+}
 
 
 /* @@@@@@@@@@ Media breakpoints @@@@@@@@@@*/

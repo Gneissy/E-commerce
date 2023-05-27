@@ -31,7 +31,7 @@ function RegisterSuccessPage(){
         <Wrapper>
             <ContentWrapper>
                 <SuccessImage className="successful-payment-img fa-sharp fa-solid fa-circle-check fa-6x"></SuccessImage>
-                <SuccessText>Welcome! Let's <Link to = "/login"> Login <i class="fa-solid fa-right-long"></i></Link>.</SuccessText>
+                <SuccessText>Welcome! Let's <Link to = "/login"> Login <i class="fa-solid fa-right-long"></i></Link></SuccessText>
             </ContentWrapper>
         </Wrapper>
     );

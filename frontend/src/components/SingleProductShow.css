@@ -13,6 +13,7 @@
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
+  padding: 0 2%; /* not to be so close */
   width: 70%;
 }
 .sp-image-wrapper{
@@ -36,6 +37,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  padding: 0 2%; /* not to be so close */
 }
 .sp-price-container{
   width: 60%;
