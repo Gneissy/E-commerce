@@ -30,6 +30,9 @@ import styled from "styled-components";
 // ProductList'i şu an için mainpage olarak kullanıyorum, ileride bir HomePage component üretilebilir.
 function App(){
 
+  const [welcomeNotification, setWelcomeNotification] = useState();
+  const [notification, setNotification] = useState();
+
   // const [loggedIn, setLoggedIn ] = useState(false);
   const user = useSelector(function(state){
     return state.user.currentUser; // This is currentUser from redux store
@@ -40,6 +43,10 @@ function App(){
 
   // console.log(user?.isAdmin)
 
+
+  useEffect(()=> {
+    setWelcomeNotification("Welcome to my website!");
+  }, []);
   
   // useEffect(() => {
     // Retrieve the logged in state from localStorage when the component mounts
@@ -65,7 +72,10 @@ function App(){
     <Router>
       <Navbar />
       <div className = "notification-container">
-        <Notification text = {"Welcome to my website!"} />
+        {welcomeNotification && <Notification text = {welcomeNotification} />}
+      </div>
+      <div className = "notification-container">
+        {user && <Notification text = {`Welcome ${user.username} 👋`} />}
       </div>
 
       { user?.isAdmin && (

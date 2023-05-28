@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 
 
 function Login(){
+
+
   const dispatch = useDispatch();
 
   // Login process function, using redux reducers
@@ -53,31 +55,31 @@ function Login(){
 
   return (
     <div className = "login-container">
-    <div className = "login-wrapper">
-      <h1> SIGN IN </h1>
-      <form>
-      <div className = "login-inputs-wrapper">
-        <div className = "login-inputs-container">
-          <input className = "login-input" onChange = { handleUsernameChange } type="text" name = "username" placeholder = "Username" />
+      <div className = "login-wrapper">
+        <h1> SIGN IN </h1>
+        <form>
+        <div className = "login-inputs-wrapper">
+          <div className = "login-inputs-container">
+            <input className = "login-input" onChange = { handleUsernameChange } type="text" name = "username" placeholder = "Username" />
+          </div>
+          <div className = "login-inputs-container">
+            <input className = "login-input" onChange = { handlePasswordChange } type="password" name = "password" placeholder = "Password" />
+          </div>
         </div>
-        <div className = "login-inputs-container">
-          <input className = "login-input" onChange = { handlePasswordChange } type="password" name = "password" placeholder = "Password" />
-        </div>
-      </div>
 
-      <div className = "login-redirection-container">
-        <a href = "#" className = "login-redirection-text"> Forgot my password </a>
-        <Link to = "/register" className = "login-redirection-text"> Create a new account</Link>
-      </div>
-
-        <div className = "login-submit-button-wrapper">
-          <button className = "login-submit-button" type= "submit" disabled={isFetching} onClick = { handleLoginSubmit }> LOGIN </button>
-          { error &&
-            <p className = "login-failure-text">Username or password is wrong.</p> 
-          }
+        <div className = "login-redirection-container">
+          <a href = "#" className = "login-redirection-text"> Forgot my password </a>
+          <Link to = "/register" className = "login-redirection-text"> Create a new account</Link>
         </div>
-      </form>
-    </div>
+
+          <div className = "login-submit-button-wrapper">
+            <button className = "login-submit-button" type= "submit" disabled={isFetching} onClick = { handleLoginSubmit }> LOGIN </button>
+            { error &&
+              <p className = "login-failure-text">Username or password is wrong.</p> 
+            }
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

@@ -4,12 +4,22 @@ import { useState } from "react";
 import { logout } from "../store/index";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Notification from "./Notification";
 
 function Navbar(){
 
   const dispatch = useDispatch();
+
+  const [notification, setNotification] = useState();
+
   const handleLogout = async function(){
       dispatch(logout());
+
+      // Notification for "good bye"
+      setNotification("See you later!");
+      setTimeout(function(){
+        setNotification();
+      }, 4000);
   }
   const cartQuantity = useSelector(function(state){
   // console.log(state.cart); // works well, returns initial state.
@@ -25,7 +35,12 @@ function Navbar(){
   console.log(currentUser);
 
   return(
+   
   <div className="navbar-wrapper">
+    <div className = "notification-container">
+      {notification && <Notification text={notification} />}
+    </div>
+    
     <div className = "navbar-container">
       <div className = "navbar-search-container">
         <form className = "navbar-form" >

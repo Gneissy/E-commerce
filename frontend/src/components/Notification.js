@@ -11,14 +11,22 @@ function Notification({ text }){
 }
 
 //! While using this component, wrap it with a div with "notification-container" class
-// An example usage:
-// "notifications" here is a state array contains individual nofitications
+//TODO Not sure about shifting upwards, check later on
+//? Documentation for this component:
 
-// <div className = "notification-container">
-//    {notifications.map((notification, index) => (
-//        <Notification key={index} text={notification} />
-//    ))}
-// </div>
+//? Example states:
+//? const [notifications, setNotifications] = useState([]); 
+//? const [notification, setNotification] = useState();
+
+//? Example implementations:
+//? <div className = "notification-container">
+//?    {notifications.map((notification, index) => (
+//?        <Notification key={index} text={notification} />
+//?    ))}
+//? </div>
+//? <div className = "notification-container">
+//?   {notification && <Notification text={notification} />}
+//? </div>
 
 
 export default Notification;
