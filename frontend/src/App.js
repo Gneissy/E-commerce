@@ -7,7 +7,7 @@ import {
   Link,
   Navigate
 } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 
 import Example from "./components/Example";
@@ -26,11 +26,24 @@ import Notification from "./components/Notification";
 
 import HomePage from "./pages/HomePage";
 import styled from "styled-components";
+import { addNotification } from "./store";
 
 // ProductList'i şu an için mainpage olarak kullanıyorum, ileride bir HomePage component üretilebilir.
 function App(){
 
-  const [notification, setNotification] = useState();
+  // To be able to reach dispatch
+  const dispatch = useDispatch();
+
+  // Getting notifications from redux store
+  const notifications = useSelector(function(state){
+    return state.notification;
+  });
+
+  // For initial "welcome" notification
+  useEffect(()=> {
+    dispatch(addNotification("Hey, welcome to my website!"));
+  }, []);
+
 
   // const [loggedIn, setLoggedIn ] = useState(false);
   const user = useSelector(function(state){
@@ -40,39 +53,26 @@ function App(){
   // Sending the user data into local storage, maybe i use redux-persist later on
   localStorage.setItem('serteserUser', JSON.stringify(user));
 
-  // console.log(user?.isAdmin)
-
-
-  
-  
-  // useEffect(() => {
-    // Retrieve the logged in state from localStorage when the component mounts
-    // Fetching logged in state from local storage.
-    
-    // const storedLoggedIn = localStorage.getItem('loggedIn');
-    //   if (storedLoggedIn) {
-    //     setLoggedIn(JSON.parse(storedLoggedIn));
-    //   }
-    // }, []);
-
-
-    // const toggleRoute = () =>{
-    //   const toggledLoggedIn = !loggedIn;
-    //   setLoggedIn(toggledLoggedIn);
-    //   // Save the toggled logged in state in localstorage
-    //   localStorage.setItem('loggedIn', JSON.stringify(toggledLoggedIn));
-    // }
 
   //TODO Main page and /product page is identical right now. I should add category links in "/" route.
+
+
+//   <div className = "notification-container">
+//   <Notification text = "Welcome to my website" />
+// </div>
+// <div className = "notification-container">
+//   {user && <Notification text = {`Welcome ${user.username} 👋`} />}
+// </div>
+
+
 
   return(
     <Router>
       <Navbar />
       <div className = "notification-container">
-        <Notification text = "Welcome to my website" />
-      </div>
-      <div className = "notification-container">
-        {user && <Notification text = {`Welcome ${user.username} 👋`} />}
+        {notifications.map((notification, index) => (
+          <Notification key={index} text={notification} />
+        ))}
       </div>
 
       { user?.isAdmin && (

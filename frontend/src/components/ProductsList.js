@@ -35,7 +35,7 @@ function ProductsList() {
               ? `http://localhost:3001/api/products?category=${category}`
               : "http://localhost:3001/api/products"
           );
-          console.log(response.data);
+          // console.log(response.data); // Gets all products as expected
           setProducts(response.data);
         } catch (err) {
           // error handling

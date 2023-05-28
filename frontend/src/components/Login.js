@@ -6,12 +6,20 @@ import { publicRequest } from "../reqMethods";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { addNotification } from "../store/index";
 
 function Login(){
 
-
+  // To be able to dispatch
   const dispatch = useDispatch();
+
+  const notifications = useSelector(function(state){
+    return state.notifications;
+  });
+
+  // console.log("notifications: " + notifications);
+
+
 
   // Login process function, using redux reducers
   const login = async function(dispatch, user){
@@ -20,9 +28,13 @@ function Login(){
     try{
         // This is axios post method, public accessable
         const res = await publicRequest.post("/auth/login", user);
+        
         // res.data will be updated as "currentUser"
         // res.data is actually an object containing name, image, email etc...
         dispatch(loginSuccessful(res.data)); // res.data is "action.payload" here.
+
+        // Can be handled by extraReducers, but for now i handle like this
+        dispatch(addNotification(`Welcome ${res.data.username}`)); 
     } catch (err){
         dispatch(loginFailure()); // state.error is "true" here.
     }

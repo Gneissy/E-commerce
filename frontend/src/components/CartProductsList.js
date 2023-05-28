@@ -45,7 +45,7 @@ function CartProductsList(){
   const onToken = function(token){
     setStripeToken(token);
   }
-  console.log(stripeToken);
+  // console.log(stripeToken); // Works as expected
 
   // To navigate user to either success or failure page after payment
   const navigate = useNavigate();
@@ -183,60 +183,61 @@ function CartProductsList(){
     }
   }, [stripeToken, cart.totalPrice, navigate]);
 
+
   return (
-<div className = "cart-products-page-wrapper">
-<div className = "cart-products-page-container">
+    <div className = "cart-products-page-wrapper">
+    <div className = "cart-products-page-container">
 
-  <div className = "cart-products-summary-container">
-    <div className = "cart-products-summary-title-container">
-      <p className = "cart-products-summary-title"> Order Summary</p>
-    </div>
-    <div className = "cart-products-summary-subtotal-container">
-      <p>Subtotal: </p>
-      <p>{ (cart.totalPrice).toFixed(2) } $</p>
-    </div>
-    <div className = "cart-products-summary-discount-container">
-      <p>Discount (10%): </p>
-      <p>-{ (cart.totalPrice * 0.1).toFixed(2) } $</p>
-    </div>
-    <div className = "cart-products-summary-total-container">
-      <p><strong>You will pay: </strong></p>
-      <p><strong>{ (cart.totalPrice - cart.totalPrice * 0.1).toFixed(2) } $</strong></p>
-    </div>
+      <div className = "cart-products-summary-container">
+        <div className = "cart-products-summary-title-container">
+          <p className = "cart-products-summary-title"> Order Summary</p>
+        </div>
+        <div className = "cart-products-summary-subtotal-container">
+          <p>Subtotal: </p>
+          <p>{ (cart.totalPrice).toFixed(2) } $</p>
+        </div>
+        <div className = "cart-products-summary-discount-container">
+          <p>Discount (10%): </p>
+          <p>-{ (cart.totalPrice * 0.1).toFixed(2) } $</p>
+        </div>
+        <div className = "cart-products-summary-total-container">
+          <p><strong>You will pay: </strong></p>
+          <p><strong>{ (cart.totalPrice - cart.totalPrice * 0.1).toFixed(2) } $</strong></p>
+        </div>
 
-    <StripeCheckout
-      name="Ahmet Serteser" 
-      image= "https://ahmetserteser.dev/images/image-myself-cropped.png"
-      billingAddress
-      shippingAddress
-      description={`Total: ${cart.totalPrice - cart.totalPrice * 0.1}$`}
-      amount={(cart.totalPrice - cart.totalPrice * 0.1)*100}
-      token= {onToken}
-      stripeKey={KEY}
-    >
-      <div className = "cart-products-addtocart-container" >
-        <button 
-          className="cart-products-addtocart-button"
-          type = "submit" 
-          disabled={
-            cart.totalPrice === 0 
-            ? true 
-            : false
-          }
-        > 
-          Checkout Now  
-        </button>
+        <StripeCheckout
+          name="Ahmet Serteser" 
+          image= "https://ahmetserteser.dev/images/image-myself-cropped.png"
+          billingAddress
+          shippingAddress
+          description={`Total: ${cart.totalPrice - cart.totalPrice * 0.1}$`}
+          amount={(cart.totalPrice - cart.totalPrice * 0.1)*100}
+          token= {onToken}
+          stripeKey={KEY}
+        >
+          <div className = "cart-products-addtocart-container" >
+            <button 
+              className="cart-products-addtocart-button"
+              type = "submit" 
+              disabled={
+                cart.totalPrice === 0 
+                ? true 
+                : false
+              }
+            > 
+              Checkout Now  
+            </button>
+            
+          </div>
+        </StripeCheckout>
         
+
+
       </div>
-    </StripeCheckout>
-    
 
-
-  </div>
-
-  <div className = "cart-products-list"> {renderedProducts} </div>
-</div>
-</div>
+      <div className = "cart-products-list"> {renderedProducts} </div>
+    </div>
+    </div>
 
   );
 }

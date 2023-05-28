@@ -6,11 +6,11 @@ import axios from "axios";
 import { publicRequest } from "../reqMethods";
 import { useDispatch } from "react-redux";
 import { addProductToCart } from "../store/index";
-import Notification from "./Notification";
+import { addNotification } from "../store/index";
 
 function SingleProductShow(){
 
-  // Describing dispatch
+  // Declaring dispatch
   const dispatch = useDispatch();
 
   const location = useLocation();
@@ -21,9 +21,6 @@ function SingleProductShow(){
   const [ color, setColor ] = useState("");
   const [ size, setSize ] = useState("");
 
-  // To show user little notifications like "you add X product into your cart"
-  const [notifications, setNotifications] = useState([]);
-  
   const handleColorChange = function(event){
     setColor(event.target.value);
   }
@@ -46,7 +43,7 @@ function SingleProductShow(){
     getProduct();
   }, [id]);
 
-  console.log(size, color);
+  // console.log(size, color);
 
   const [count, setCount] = useState(1);
   const handlePlusClick = function(){
@@ -72,8 +69,9 @@ function SingleProductShow(){
     ));
 
     // For notifications
+    // It could be handled by extraReducers, i'll check that later on
     const newNotification = `${count}x ${product.title} added to the cart.`;
-    setNotifications((previousNotifications) => [...previousNotifications, newNotification]);
+    dispatch(addNotification(newNotification));
   }
 
   //** Temp */
@@ -107,24 +105,23 @@ function SingleProductShow(){
 
 
       <div className = "sp-options">
-        <select onChange = { handleColorChange }>
-          <option disabled selected>Colors</option>
-          <option > {product.color} </option>
-        </select>
-        <select onChange = { handleSizeChange }>
-          <option disabled selected>Size</option>
-          <option  >{product.size}</option>
-        </select>
+        {product.color && 
+          <select onChange = { handleColorChange }>
+            <option disabled selected>Colors</option>
+            <option > {product.color} </option>
+          </select>
+        }
+        {product.size && 
+          <select onChange = { handleSizeChange }>
+            <option disabled selected>Size</option>
+            <option  >{product.size}</option>
+          </select>
+        }
     </div>
 
     <div className = "sp-addtocart-container" >
       <button className = "sp-addtocart-button" onClick = {handleAddCartClick} type = "submit"> Add To Cart  </button>
       <i className ="sp-heart fa-regular fa-heart fa-2x"></i>
-      <div className = "notification-container">
-        {notifications.map((notification, index) => (
-            <Notification key={index} text={notification} />
-        ))}
-      </div>
     </div>
     </div>
     </div>

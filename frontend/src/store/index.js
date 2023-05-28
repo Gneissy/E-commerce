@@ -4,6 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 // Bringing in reducers
 import {cartReducer, addProductToCart, incrementProductCount, decrementProductCount, deleteProductFromCart } from "./slices/cartSlice";
 import {userReducer, loginBegin, loginSuccessful, loginFailure, logout } from "./slices/userSlice";
+import { notificationReducer, addNotification } from "./slices/notificationSlice";
 
 
 // Bringing in actions
@@ -13,7 +14,8 @@ import {userReducer, loginBegin, loginSuccessful, loginFailure, logout } from ".
 const store = configureStore({
     reducer: {
         cart: cartReducer,
-        user: userReducer
+        user: userReducer,
+        notification: notificationReducer
     }
 });
 
@@ -27,5 +29,6 @@ export {
     loginBegin,
     loginSuccessful,
     loginFailure,
-    logout
+    logout,
+    addNotification
 };

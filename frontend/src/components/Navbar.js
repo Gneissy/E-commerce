@@ -5,22 +5,26 @@ import { logout } from "../store/index";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Notification from "./Notification";
+import { addNotification } from "../store/index";
 
 function Navbar(){
 
+  const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
-
-  const [notification, setNotification] = useState();
 
   const handleLogout = async function(){
       dispatch(logout());
-
-      // Notification for "good bye"
-      setNotification("See you later!");
-      setTimeout(function(){
-        setNotification();
-      }, 4000);
+      // An automatic "Good bye" notification pops
+      // Due to extraReducers
   }
+  const handleSearchChange = function(event){
+    setSearchText(event.target.value);
+  }
+
+  const handleSearchSubmit = async function(){
+    // Do search and update products
+  }
+
   const cartQuantity = useSelector(function(state){
   // console.log(state.cart); // works well, returns initial state.
   // like { products: [], quantity: 0, totalPrice: 0 }
@@ -32,21 +36,17 @@ function Navbar(){
     }
   });
 
-  console.log(currentUser);
+  // console.log(currentUser);
 
   return(
    
-  <div className="navbar-wrapper">
-    <div className = "notification-container">
-      {notification && <Notification text={notification} />}
-    </div>
-    
+  <div className="navbar-wrapper">    
     <div className = "navbar-container">
       <div className = "navbar-search-container">
         <form className = "navbar-form" >
           <div className = "navbar-form--container">
-            <input className = "navbar-input" placeholder="Search" />
-            <button type="submit" className="navbar-search__submit-button fa-solid fa-magnifying-glass fa-2x"></button>
+            <input className = "navbar-input" placeholder="Search" value={searchText} onChange = {handleSearchChange} />
+            <button type="submit" className="navbar-search__submit-button fa-solid fa-magnifying-glass fa-2x" onSubmit = {handleSearchSubmit}></button>
           </div>
         </form>
       </div>
