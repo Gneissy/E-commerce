@@ -1,8 +1,18 @@
 /* To prevent stacking effect of notifications*/
+/* Absolute positioning gives vertical stacking*/
+/* When a new notification is added at the bottom right, 
+it takes up that position, pushing the existing 
+notifications upward to make room for the new one. */
+/* This behavior is inherent to the default rendering of 
+absolutely positioned elements in most browsers. */
 .notification-container { 
-  position: absolute;
+  position: absolute; 
   bottom: 50px;
   right: 50px;
+  z-index: 999;
+
+  /* allows clicking behind it */
+  pointer-events: none;
 }
 
 .notification {
