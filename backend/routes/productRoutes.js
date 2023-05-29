@@ -7,17 +7,26 @@ const Product = require("../models/product");
 // Bringing in Middlewares
 const { verifyToken, verifyBothTokenAndAuthorization, verifyTokenAndCheckAdmin } = require("../middlewares/verifyToken");
 
-
 // Get All Products // Everyone can see all products // Works
 router.get("/", async function(req, res){
   const queryCategory = req.query.category;
-  try{
+  const search = req.query.search;
+
+  try {
     let products;
     if(queryCategory){
+      // For changing categories
       products = await Product.find({
         categories: {
           $in: [queryCategory]
         }
+      });
+    }
+    else if(search){
+      // For searching products via Navbar.js component
+      products = await Product.find({
+        title: {$regex: search, $options: "i"}
+        // i means no-case sensitive.
       });
     }
     else{
@@ -28,7 +37,6 @@ router.get("/", async function(req, res){
   catch(err){
     res.status(500).json(err);
   }
-
 });
 
 

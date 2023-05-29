@@ -2,12 +2,25 @@ import React from "react";
 import ProductsShow from "./ProductsShow";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import "./ProductsList.css";
 import axios from "axios";
+import { updateProducts } from "../store/index";
+
 
 function ProductsList() {
 
-    const [products, setProducts] = useState([]);
+    // Dispatch access
+    const dispatch = useDispatch();
+
+    // Products state is now coming from Redux store:
+    const products = useSelector(function (state){
+      return state.product.products;
+    });
+    // console.log(products); // All product object in an array, as expected
+   
+
+    // const [products, setProducts] = useState([]); //* Will be used Redux store instead
     const [sort, setSort] = useState("");
     const [filters, setFilters] = useState({});
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -27,6 +40,8 @@ function ProductsList() {
     const handleSortChange = function(event) {
         setSort(event.target.value);
     }
+
+    // Get products
     const getProducts = async function() {
         try {
           // Here if there is a category, takes that query. Otherwise directly takes all products.
@@ -36,15 +51,18 @@ function ProductsList() {
               : "http://localhost:3001/api/products"
           );
           // console.log(response.data); // Gets all products as expected
-          setProducts(response.data);
+          dispatch(updateProducts(response.data));
         } catch (err) {
           // error handling
         }
     }
+  
+    // Display each object in "products" array in a <ProductsShow /> component
     const renderedProducts = products.map(function(product) {
         return <ProductsShow product = { product } key = { product._id } />;
     });
 
+    // Fetch required products
     useEffect(() => {
       getProducts();
     }, [category]);
@@ -70,7 +88,7 @@ function ProductsList() {
         setFilteredProducts(filteredProducts);
     }, [products, filters]);
 
-
+    // Sorting stuff
     useEffect(() => {
       if (sort === "cheapest") {
         setFilteredProducts((prev) =>

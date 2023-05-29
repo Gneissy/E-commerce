@@ -1,15 +1,16 @@
 import React from "react";
 import "./Navbar.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { logout } from "../store/index";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import Notification from "./Notification";
-import { addNotification } from "../store/index";
+import axios from "axios";
+import { updateProducts } from "../store/index";
 
 function Navbar(){
 
-  const [searchText, setSearchText] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+
   const dispatch = useDispatch();
 
   const handleLogout = async function(){
@@ -17,13 +18,30 @@ function Navbar(){
       // An automatic "Good bye" notification pops
       // Due to extraReducers
   }
-  const handleSearchChange = function(event){
-    setSearchText(event.target.value);
+
+  const handleSearchChange = async function(event){
+    setSearchQuery(event.target.value);
+    // This should only be responsible for changing state
   }
 
-  const handleSearchSubmit = async function(){
-    // Do search and update products
-  }
+  // Handles search functionality for each keypress
+  useEffect(()=> {
+    const fetchSearchedData = async function(){
+      try {
+        const response = await axios.get(`http://localhost:3001/api/products?search=${searchQuery}`);
+        // Update the products list with the search results:
+        dispatch(updateProducts(response.data));
+      } catch (err){
+        console.log(err);
+      }
+    }
+    fetchSearchedData();
+
+    //? Included "dispatch" in 2nd argument, which typically changes when the Redux store is updated.
+    //? It's a good practise adding "dispatch" into 2nd argument in useEffects.
+    //? It helps ensure that the effect is re-run when the dispatch function changes,
+    //? and prevents any potential issues related to stale closures or outdated references to the dispatch function.
+  }, [searchQuery, dispatch]);
 
   const cartQuantity = useSelector(function(state){
   // console.log(state.cart); // works well, returns initial state.
@@ -45,8 +63,8 @@ function Navbar(){
       <div className = "navbar-search-container">
         <form className = "navbar-form" >
           <div className = "navbar-form--container">
-            <input className = "navbar-input" placeholder="Search" value={searchText} onChange = {handleSearchChange} />
-            <button type="submit" className="navbar-search__submit-button fa-solid fa-magnifying-glass fa-2x" onSubmit = {handleSearchSubmit}></button>
+            <input className = "navbar-input" placeholder="Search" value={searchQuery} onChange = {handleSearchChange} />
+            <button type="submit" className="navbar-search__submit-button fa-solid fa-magnifying-glass fa-2x"></button>
           </div>
         </form>
       </div>
@@ -73,9 +91,6 @@ function Navbar(){
             </>
           )
 }
-
-           
-            
           </div>
       </div>
     </div>
