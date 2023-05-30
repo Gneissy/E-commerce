@@ -65,3 +65,17 @@ absolutely positioned elements in most browsers. */
     transform: scaleX(1);
   }
 }
+
+/* @@@@@@@@@@ Media breakpoints @@@@@@@@@@ */
+@media (max-width: 801px){
+  .notification-container{
+    bottom: 16px;
+    right: 16px;
+  }
+}
+@media (max-width: 401px){
+  .notification-container{
+    bottom: 8px;
+    right: 8px;
+  }
+}
