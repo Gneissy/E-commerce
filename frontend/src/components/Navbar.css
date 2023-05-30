@@ -44,6 +44,9 @@
 .navbar-icons-container{
   flex: 2;
 }
+.navbar-icon-container{
+  flex: 1;
+}
 .navbar-input{
   height: 3rem;
 }
@@ -62,6 +65,19 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+}
+.navbar-icon-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar-cart-icon,
+.navbar-house-icon{
+  transition: all .25s ease;
+
+  &:hover{
+    color: #67cae1;
+  }
 }
 
 .navbar-cart-container,
@@ -120,6 +136,7 @@
     gap:2rem;
   }
   .navbar-wrapper{
-    padding: 8% 0;
+    padding: 5rem 0;
   }
 }
+

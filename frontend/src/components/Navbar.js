@@ -60,6 +60,14 @@ function Navbar(){
    
   <div className="navbar-wrapper">    
     <div className = "navbar-container">
+      <div className = "navbar-icon-container">
+        <Link to = "/" className = "link">
+          <i class="fa-solid fa-house fa-2x navbar-house-icon"></i>
+        </Link>
+      </div>
+      
+
+
       <div className = "navbar-search-container">
         <form className = "navbar-form" >
           <div className = "navbar-form--container">
@@ -71,7 +79,7 @@ function Navbar(){
       <div className="navbar-icons-container">
           <div className = "navbar-cart-container">
             <Link className = "link" to = "/cart">
-              <i className="cart-image fa-solid fa-cart-shopping fa-2x"></i>
+              <i className="cart-image fa-solid fa-cart-shopping fa-2x navbar-cart-icon"></i>
             </Link>
             {cartQuantity !== 0 && <div className="navbar-cart-item-quantity">{cartQuantity}</div>}
           </div>

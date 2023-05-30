@@ -79,10 +79,6 @@ function App(){
         </Link>
         )
       }
-
-      <Link to = "/">
-        <button> Main page "/"</button>
-      </Link>
       
       <Routes>
         <Route exact path = "/" element = {<ProductsList />} />
