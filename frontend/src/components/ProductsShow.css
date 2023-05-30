@@ -36,8 +36,8 @@
 .product-image{
   position: relative;
   transition: all 0.2s ease-in;
-  width: 280px;
-  height: 280px;
+  width: 200px;
+  height: 200px;
 }
 
 .heart-icon{
