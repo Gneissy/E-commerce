@@ -2,7 +2,6 @@ import React from "react";
 import "./SingleProductShow.css";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 import { publicRequest } from "../reqMethods";
 import { useDispatch } from "react-redux";
 import { addProductToCart } from "../store/index";

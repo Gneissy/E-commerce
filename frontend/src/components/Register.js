@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import "./Register.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { publicRequest } from "../reqMethods";
 
 function Register(){

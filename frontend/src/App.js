@@ -10,10 +10,8 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 
-import Example from "./components/Example";
 import ProductsList from "./components/ProductsList";
 import SingleProductShow from "./components/SingleProductShow";
-import ProductsShow from "./components/ProductsShow";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";

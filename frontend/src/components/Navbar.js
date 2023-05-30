@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { logout } from "../store/index";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { updateProducts } from "../store/index";
+import { publicRequest } from "../reqMethods";
 
 function Navbar(){
 
@@ -28,7 +28,7 @@ function Navbar(){
   useEffect(()=> {
     const fetchSearchedData = async function(){
       try {
-        const response = await axios.get(`http://localhost:3001/api/products?search=${searchQuery}`);
+        const response = await publicRequest.get(`/products?search=${searchQuery}`);
         // Update the products list with the search results:
         dispatch(updateProducts(response.data));
       } catch (err){

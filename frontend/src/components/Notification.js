@@ -1,6 +1,4 @@
-import react from "react";
 import "./Notification.css";
-import Example from "./Example";
 
 function Notification({ text }){
     return(

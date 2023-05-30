@@ -4,7 +4,6 @@ import CartProductsShow from "./CartProductsShow";
 import { useSelector, useDispatch } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { userRequest } from "../reqMethods";
 import { useNavigate } from "react-router-dom";
 import { incrementProductCount, decrementProductCount, deleteProductFromCart } from "../store/index";

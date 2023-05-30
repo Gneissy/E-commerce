@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./ProductsList.css";
-import axios from "axios";
 import { updateProducts } from "../store/index";
+import { publicRequest } from "../reqMethods";
 
 
 function ProductsList() {
@@ -45,10 +45,10 @@ function ProductsList() {
     const getProducts = async function() {
         try {
           // Here if there is a category, takes that query. Otherwise directly takes all products.
-          const response = await axios.get(
+          const response = await publicRequest.get(
             category
-              ? `http://localhost:3001/api/products?category=${category}`
-              : "http://localhost:3001/api/products"
+              ? `/products?category=${category}`
+              : "/products"
           );
           // console.log(response.data); // Gets all products as expected
           dispatch(updateProducts(response.data));

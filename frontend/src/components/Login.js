@@ -1,6 +1,5 @@
 import React from "react";
 import "./Login.css"
-import axios from "axios";
 import { loginBegin, loginSuccessful, loginFailure, logout } from "../store/index";
 import { publicRequest } from "../reqMethods";
 import { useDispatch, useSelector } from "react-redux";
