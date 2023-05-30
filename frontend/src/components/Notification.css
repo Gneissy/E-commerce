@@ -6,7 +6,7 @@ notifications upward to make room for the new one. */
 /* This behavior is inherent to the default rendering of 
 absolutely positioned elements in most browsers. */
 .notification-container { 
-  position: absolute; 
+  position: fixed; 
   bottom: 50px;
   right: 50px;
   z-index: 999;
