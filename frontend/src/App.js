@@ -21,9 +21,8 @@ import SuccessPage from "./pages/Success";
 import RegisterSuccessPage from "./pages/RegisterSuccess";
 import AddNewProduct from "./components/AddNewProduct";
 import Notification from "./components/Notification";
+import NotAuthorized from "./pages/NotAuthorized";
 
-import HomePage from "./pages/HomePage";
-import styled from "styled-components";
 import { addNotification } from "./store";
 
 // ProductList'i şu an için mainpage olarak kullanıyorum, ileride bir HomePage component üretilebilir.
@@ -39,7 +38,7 @@ function App(){
 
   // For initial "welcome" notification
   useEffect(()=> {
-    dispatch(addNotification("Hey, welcome to my website!"));
+    dispatch(addNotification("Hey, welcome!"));
   }, []);
 
 
@@ -74,11 +73,19 @@ function App(){
       </div>
 
       { user?.isAdmin && (
-        <Link className = "link" to = "/addnewproduct">
-          <button> Add new product</button>
-        </Link>
+        <div className = "admin-panel">
+          <hr className = "admin-panel-line" />
+          <Link className = "link" to="/addnewproduct">
+            <button className="admin-panel-button"> Add new product <i class="fa-solid fa-plus"></i></button>
+          </Link>
+          <Link className = "link" to="/products">
+            <button className="admin-panel-button"> See all products </button>
+          </Link>
+          <hr className = "admin-panel-line" />
+        </div>
         )
       }
+     
       
       <Routes>
         <Route exact path = "/" element = {<ProductsList />} />
@@ -90,6 +97,11 @@ function App(){
             user
           ? <Navigate replace to={"/"} /> 
           : <Register />} />
+        <Route path = "/addnewproduct" element = {
+            user?.isAdmin
+          ? <AddNewProduct />
+          : <NotAuthorized />
+        } />
         <Route path = "/cart" element = {<CartProductsList />} />
         <Route path = "/products" element = {<ProductsList />} />
         <Route path = "/products/:category" element = {<ProductsList />} />
@@ -97,7 +109,6 @@ function App(){
         <Route path = "/success" element = {<SuccessPage />} />
         <Route path = "/registersuccess" element = {<RegisterSuccessPage />} />
         <Route path = "/addnewproduct" element = {<AddNewProduct />} />
-
 
       </Routes>
       <Footer />

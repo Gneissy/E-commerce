@@ -1,16 +1,20 @@
 import React from "react";
 import "./SingleProductShow.css";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { publicRequest } from "../reqMethods";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "../store/index";
 import { addNotification } from "../store/index";
+import { userRequest } from "../reqMethods";
 
 function SingleProductShow(){
 
   // Declaring dispatch
   const dispatch = useDispatch();
+
+  // For redirection of successful register
+  const navigate = useNavigate();
 
   const location = useLocation();
   const id = location.pathname.split("/")[2];
@@ -19,6 +23,12 @@ function SingleProductShow(){
   const [ product, setProduct ] = useState({});
   const [ color, setColor ] = useState("");
   const [ size, setSize ] = useState("");
+
+  const user = useSelector(function(state){
+    return state.user.currentUser;
+  });
+  // console.log(user); // Current user object
+
 
   const handleColorChange = function(event){
     setColor(event.target.value);
@@ -73,6 +83,25 @@ function SingleProductShow(){
     dispatch(addNotification(newNotification));
   }
 
+  const handleDeleteProductClick = async function(){
+    // Deleting product api call
+    // That will only be visible and available if user is an admin
+    const productToDelete = await userRequest.delete(`/products/${product._id}`, {
+      headers: {
+        TOKEN: `Bearer ${user.accessToken}`
+      }
+    });
+    // console.log(productToDelete.data);
+
+    if(productToDelete.status === 200){
+      // For notification
+      dispatch(addNotification(`${product.title} is successfully deleted from database.`));
+      // Redirect to main page
+      navigate("/");
+    }
+
+  }
+
   //** Temp */
   const colors = ["red", "blue", "lightblue"];
   const sizes = ["s","m","l","xl"];
@@ -117,11 +146,17 @@ function SingleProductShow(){
           </select>
         }
     </div>
-
+  
     <div className = "sp-addtocart-container" >
       <button className = "sp-addtocart-button" onClick = {handleAddCartClick} type = "submit"> Add To Cart  </button>
       <i className ="sp-heart fa-regular fa-heart fa-2x"></i>
     </div>
+
+    { user?.isAdmin &&
+      <div className = "sp-admin-container" >
+        <button className = "sp-admin-delete-product-button" onClick = { handleDeleteProductClick } type = "submit"> Delete this product <i className = "fa-sharp fa-solid fa-trash"></i> </button>
+      </div>
+    }
     </div>
     </div>
     </div>

@@ -42,13 +42,13 @@
 
 .heart-icon{
   position: absolute;
-  transition: all 0.2s ease-in;
+  transition: all 0.05s ease-in;
   z-index: 999;
   opacity: 0;
   color: #D14D72;
 }
 .heart-icon:active{
-  transform: scale(2);
+  transform: scale(1.1);
 }
 
 

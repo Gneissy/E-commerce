@@ -5,7 +5,9 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import app from "../firebase";
 import { publicRequest, userRequest } from "../reqMethods";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addNotification } from "../store";
 
 function AddNewProduct(){
 
@@ -16,6 +18,13 @@ function AddNewProduct(){
         return state.user.currentUser;
     });
     // console.log(user); // Gives the current user
+
+    // To be able to dispatch anywhere from app
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+
 
     // States
     const [title, setTitle] = useState("");
@@ -131,20 +140,23 @@ function AddNewProduct(){
                     };
                     console.log(product); // It is a whole new product object.
 
-
-
                     // TODO Send product and create a product in database.
                     // TODO Problem here is to have an "unauthorized" error, due to token issues.
                     // TODO For some reason, i couldn't handle using "userRequest", will check later on
-                    await userRequest.post("/products", product, { // Could've used axios.post("http:localhost:3001/api/products")
+                    const productCreated = await userRequest.post("/products", product, { // Could've used axios.post("http:localhost:3001/api/products")
                         headers: { // Sending the token to prove i'm authorized //? solved this way
                             TOKEN: `Bearer ${user.accessToken}`
                           }
                     });
+                    if (productCreated.status === 201){
+                         // For notification
+                        dispatch(addNotification(`${product.title} is successfully created and saved in database.`));
+                        // Redirect to main page
+                        navigate("/");
+                    }
                 });
             }
       );
-
     };
 
 
