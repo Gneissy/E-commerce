@@ -1,10 +1,8 @@
-import react from "react";
 import { useState } from "react";
 import "./AddNewProduct.css";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from "../firebase";
-import { publicRequest, userRequest } from "../reqMethods";
-import axios from "axios";
+import { userRequest } from "../reqMethods";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addNotification } from "../store";
