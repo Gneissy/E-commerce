@@ -1,0 +1,127 @@
+
+.categories-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0 5rem;
+}
+.categories-title-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 70%;
+    padding: 2rem 0;
+}
+.categories-content-wrapper{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.categories-grid{
+    display: grid;
+    gap: 1.5rem;
+    grid-auto-columns: 1fr;
+    /* grid-auto-rows: 1fr;  */ 
+    /* No need rows for now */
+
+
+    /* This is like a picture, sharing pieces like: 
+        1123
+        4553
+    */
+    grid-template-areas:
+    "one one two three"
+    "four five five three";
+}
+.category-link{
+    display: flex;
+    position: relative;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+/* Those are like declaring variables, they could be anything meaninful */
+.category-link:nth-child(1){
+    grid-area: one;
+}
+.category-link:nth-child(2){
+    grid-area: two;
+}
+.category-link:nth-child(3){
+    grid-area: three;
+}
+.category-link:nth-child(4){
+    grid-area: four;
+}
+.category-link:nth-child(5){
+    grid-area: five;
+}
+.category-img{
+    transition: all .2s ease;
+    border-radius: 1rem; /* Not use if u dont like */ 
+    filter: brightness(70%);
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    outline: 2px solid rgb(126 255 178 /25%);
+    outline-offset: -5px;
+    overflow: hidden;
+    isolation: isolate;
+    transition: all .2s ease;
+    /* filter: blur(1px); */
+}
+.card-body{
+    position: absolute;
+    inset: 0; /* center */
+    padding: 50px;
+    color: white;
+    text-align: center;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.card-body-title{
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 10px rgba(0,0,0, .5);
+}
+.card-body-description{
+    font-size: 14px;
+    opacity: 0;
+    translate: -25px;
+    transition: all .2s ease;
+}
+.category-link:hover .card-body-description{
+    opacity: 1;
+    translate: 0;
+}
+.category-link:hover .category-img{
+    outline-offset: -20px;
+    /* filter: blur(0); */
+    filter: brightness(50%);
+}
+
+
+/* Media Queries that manage grid easily */
+@media (max-width: 1301px) {
+    .categories-grid{
+
+        /* This is like all elements are one row.
+            1
+            2
+            3
+            4
+            5
+        */
+        grid-template-areas: 
+        "one"
+        "two"
+        "three"
+        "four"
+        "five";
+    }
+}

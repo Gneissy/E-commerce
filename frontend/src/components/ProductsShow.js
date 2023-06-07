@@ -27,7 +27,7 @@ function ProductsShow( {product} ){
           <Link className = "link" to = {`/product/${product._id}`} style={{ textDecoration: 'none' }} >
             <p className = "product-title"> {product.title} </p>
           </Link>
-          <p className = "product-price"> {product.price} $</p>
+          <p className = "product-price"> {(product.price).toFixed(2)} $</p>
           
           <Link className = "link" to = {`/product/${product._id}` }>
             <a className = "plus-icon fa-solid fa-plus"></a>

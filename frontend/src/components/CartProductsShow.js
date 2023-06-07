@@ -29,7 +29,7 @@ function CartProductsShow( {product, handlePlusClick, handleMinusClick, handleTr
               <i className = "fa-sharp fa-solid fa-trash trashbin" onClick = { handleTrashClick } value = { product._id }></i>
             </div>
             <div className = "cart-products-price-container">
-              <p className = "cart-products-price-text"> {product.price * product.count} $ </p>
+              <p className = "cart-products-price-text"> {(product.price * product.count).toFixed(2)} $ </p>
             </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ import { updateProducts } from "../store/index";
 import { publicRequest } from "../reqMethods";
 
 
-function ProductsList() {
+function FilterableProductsList() {
 
     // Dispatch access
     const dispatch = useDispatch();
@@ -69,7 +69,6 @@ function ProductsList() {
 
     useEffect(() => {
       // ! Here might (should) be if(category). 
-      // TODO There is no category links in /product yet.
 
       // Only filter the products if a category is selected
         const filteredProducts = products.filter((item) => {
@@ -110,11 +109,43 @@ function ProductsList() {
     // ********** Sorting cheapest needs changing to sth else and changing cheapest back, gonna check that **********
 
 
-    //! THOSE ARE FOR SELECTIONS / FILTERS, ADD THEM LATER ON
-    //! THOSE ARE FOR SELECTIONS / FILTERS, ADD THEM LATER ON
-    //! THOSE ARE FOR SELECTIONS / FILTERS, ADD THEM LATER ON
+{ <div className = "product-list-selections" >
+          <div className = "selection-filter" >
+            <p className = "selection-title" > Filters: </p>
+            <select name = "color" onChange = { handleFilterChange} >
+              <option disabled selected > Color </option>
+              <option > blue </option>
+              <option > red </option>
+              <option > green </option>
+              <option > black </option>
+              <option > white </option>
+              <option > purple </option>
+              <option > orange </option>
+            </select>
+            <select name = "size" onChange = { handleFilterChange } >
+              <option disabled selected > Size </option>
+              <option > xs </option>
+              <option > s </option>
+              <option > m </option>
+              <option > l </option>
+              <option > xl </option>
+              <option > xxl </option>
+            </select>
+            </div>
+            <div className = "selection-sort" >
+              <p className = "selection-title" > Sorting: </p>
+              <select onChange = { handleSortChange} >
+                <option disabled selected > Sort </option>
+                <option value = "cheapest" > cheapest </option>
+                <option value = "newest" > newest </option>
+              </select>
+            </div>
+          </div> }
 
-{/* <div className = "product-list-selections" >
+
+    return (
+      <div className = "product-list-wrapper" >
+        <div className = "product-list-selections" >
           <div className = "selection-filter" >
             <p className = "selection-title" > Filters: </p>
             <select name = "color" onChange = { handleFilterChange} >
@@ -144,20 +175,7 @@ function ProductsList() {
                 <option value = "newest" > newest </option>
               </select>
             </div>
-          </div> */}
-
-
-
-
-
-
-
-
-    return (
-      <div className = "product-list-wrapper" >
-        <div className = "product-list-title-container">
-          <h1>Products you may like</h1>
-        </div>
+          </div>
         
         <div className = "product-list" > {
           category
@@ -169,4 +187,4 @@ function ProductsList() {
     );
 }
 
-export default ProductsList;
+export default FilterableProductsList;

@@ -38,6 +38,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   padding: 0 2%; /* not to be so close */
+  gap: 2rem;
 }
 .sp-price-container{
   width: 60%;
@@ -100,6 +101,25 @@
   &:hover{
     background-color: white;
     color: #D14D72;
+  }
+  &:active{
+    transform: scale(1.02);
+  }
+}
+.sp-admin-update-product-button{
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding: 1rem;
+  border: 2px solid white;
+  border-radius: 2rem;
+  background-color: #ffdead;
+  cursor: pointer;
+  transition: all .2s ease;
+  width: 100%;
+  color: #2F4858;
+  &:hover{
+    background-color: #2F4858;
+    color: #ffdead;
   }
   &:active{
     transform: scale(1.02);

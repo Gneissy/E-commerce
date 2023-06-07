@@ -22,6 +22,10 @@ import RegisterSuccessPage from "./pages/RegisterSuccess";
 import AddNewProduct from "./components/AddNewProduct";
 import Notification from "./components/Notification";
 import NotAuthorized from "./pages/NotAuthorized";
+import UpdateProduct from "./components/UpdateProduct";
+import FilterableProductList from "./components/FilterableProductList";
+import Categories from "./components/Categories";
+import HomePage from "./pages/HomePage";
 
 import { addNotification } from "./store";
 
@@ -86,9 +90,10 @@ function App(){
         )
       }
      
-      
+
+
       <Routes>
-        <Route exact path = "/" element = {<ProductsList />} />
+        <Route exact path = "/" element = {<HomePage />} />
         <Route path = "/login" element = { 
             user
           ? <Navigate replace to={"/"} />
@@ -103,13 +108,13 @@ function App(){
           : <NotAuthorized />
         } />
         <Route path = "/cart" element = {<CartProductsList />} />
-        <Route path = "/products" element = {<ProductsList />} />
-        <Route path = "/products/:category" element = {<ProductsList />} />
+        <Route path = "/products" element = {<FilterableProductList />} />
+        <Route path = "/products/:category" element = {<FilterableProductList />} />
         <Route path = "/product/:id" element = {<SingleProductShow />} />
         <Route path = "/success" element = {<SuccessPage />} />
         <Route path = "/registersuccess" element = {<RegisterSuccessPage />} />
         <Route path = "/addnewproduct" element = {<AddNewProduct />} />
-
+        <Route path = "/updateproduct" element = {<UpdateProduct />} />
       </Routes>
       <Footer />
     </Router>

@@ -1,0 +1,108 @@
+
+.new-product-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 40%;
+}
+.new-product-create-button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.new-product-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0;
+}
+.new-product-individual-part{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.new-product-individual-part textarea{
+    min-height: 5rem;
+}
+.new-product-label{
+    font-size: 1.25rem;
+}
+.new-product-individual-part input,
+.new-product-individual-part textarea{
+    padding: .5rem;
+    font-size: 1.125rem;
+    border: 1px solid lightblue;
+}
+.new-product-individual-part input::placeholder,
+.new-product-individual-part textarea::placeholder{
+    color: #777777;
+    opacity: .5;
+}
+
+
+
+
+.new-product-create-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-product-add-button{
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 2px solid lightblue;
+    border-radius: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .2s ease;
+    width: 100%;
+    &:hover{
+      background-color: lightblue;
+      color: white;
+    }
+    &:active{
+      transform: scale(1.02);
+    }
+  }
+
+
+.new-product-uploading-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e4e4e4;
+    padding: 2rem;
+}
+.new-product-dragged-over{
+    border: 2px dashed lightblue;
+}
+.new-product-uploading-text{
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+.new-product-image-preview-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+
+
+@media (max-width: 1201px){
+    .new-product-form{
+      width: 60%;
+    }
+}
+
+@media (max-width: 601px){
+    .new-product-form{
+      width: 75%;
+    }
+}

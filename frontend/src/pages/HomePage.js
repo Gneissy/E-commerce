@@ -1,14 +1,14 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ProductsList from "../components/ProductsList";
+import ProductList from "../components/ProductsList";
+import Categories from "../components/Categories";
 
 function HomePage(){
   return (
     <div>
-      <Navbar />
-      <ProductsList />
-      <Footer />
+      <Categories />
+      <ProductList />
     </div>
   )
 }

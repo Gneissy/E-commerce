@@ -179,7 +179,7 @@ function AddNewProduct(){
                     </div>
                     <div className = "new-product-individual-part">
                         <label className = "new-product-label">Categories:</label>
-                        <input type = "text" name="categories" placeholder="t-shirt, clothes" value={categories} onChange = {handleCategoriesChange}></input>
+                        <input type = "text" name="categories" placeholder="gaming,technology" value={categories} onChange = {handleCategoriesChange}></input>
                     </div>
                     <div className = "new-product-individual-part">
                         <label className = "new-product-label">Size:</label>
