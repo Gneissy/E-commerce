@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const MAIN_API_URL = "https://e-commerce-backend-server.onrender.com/api"; // For backend deployment
-const MAIN_API_URL = "http://localhost:3001/api"; // For local study
+const MAIN_API_URL = "https://e-commerce-backend-server.onrender.com/api"; // For backend deployment
+// const MAIN_API_URL = "http://localhost:3001/api"; // For local study
 
 // const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDAzYTUxOTVhMTk0OTFlNDk3NTMyZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NTAxNTk1OCwiZXhwIjoxNjg1MTAyMzU4fQ.rZTnOiZ1DKgb1sn_F0U8gtY29OodEta0hQXx2cHrVvo";
 
