@@ -48,12 +48,12 @@ function Register(){
         <form>
         <div className = "register-inputs-wrapper">
           <div className = "register-inputs-container">
-            <input className = "register-input" type="text" name = "username" placeholder = "Username" onChange = { handleUsernameChange } />
-            <input className = "register-input" type="email" name = "email" placeholder = "Email" onChange = { handleEmailChange } />
+            <input className = "register-input" type="text" name = "username" autocomplete = "off" placeholder = "Username" onChange = { handleUsernameChange } />
+            <input className = "register-input" type="email" name = "email" autocomplete = "off" placeholder = "Email" onChange = { handleEmailChange } />
           </div>
           <div className = "register-inputs-container">
-            <input className = "register-input" type="password" name = "password" placeholder = "Password" onChange = { handlePasswordChange } />
-            <input className = "register-input" type="password" name = "password-confirm" placeholder = "Confirm Password" onChange = { handleConfirmPasswordChange } />
+            <input className = "register-input" type="password" name = "password" autocomplete = "off" placeholder = "Password" onChange = { handlePasswordChange } />
+            <input className = "register-input" type="password" name = "password-confirm" autocomplete = "off" placeholder = "Confirm Password" onChange = { handleConfirmPasswordChange } />
           </div>
         </div>
 

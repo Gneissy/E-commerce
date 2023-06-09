@@ -171,27 +171,27 @@ function AddNewProduct(){
                     <h1> Create a new product</h1>
                     <div className = "new-product-individual-part">
                         <label className = "new-product-label">Title:</label>
-                        <input type = "text" name="title" placeholder="Blaze designed car" value = {title} onChange = {handleTitleChange}></input>
+                        <input type = "text" name="title" autocomplete = "off" placeholder="Blaze designed car" value = {title} onChange = {handleTitleChange}></input>
                     </div>
                     <div className = "new-product-individual-part">
                         <label className = "new-product-label">Description:</label>
-                        <textarea type = "text" name="description" placeholder="A real cool looking t-shirt that'll blow your mind." value = {description} onChange = {handleDescriptionChange}></textarea>
+                        <textarea type = "text" name="description" autocomplete = "off" placeholder="A real cool looking t-shirt that'll blow your mind." value = {description} onChange = {handleDescriptionChange}></textarea>
                     </div>
                     <div className = "new-product-individual-part">
                         <label className = "new-product-label">Categories:</label>
-                        <input type = "text" name="categories" placeholder="gaming,technology" value={categories} onChange = {handleCategoriesChange}></input>
+                        <input type = "text" name="categories" autocomplete = "off" placeholder="gaming,technology" value={categories} onChange = {handleCategoriesChange}></input>
                     </div>
                     <div className = "new-product-individual-part">
                         <label className = "new-product-label">Size:</label>
-                        <input type = "text" name="size" placeholder="xs" value = {size} onChange={handleSizeChange}></input>
+                        <input type = "text" name="size" autocomplete = "off" placeholder="xs" value = {size} onChange={handleSizeChange}></input>
                     </div>
                     <div className = "new-product-individual-part">
                         <label className = "new-product-label">Color:</label>
-                        <input type = "text" name="color" placeholder="red" value = {color} onChange = {handleColorChange}></input>
+                        <input type = "text" name="color" autocomplete = "off" placeholder="red" value = {color} onChange = {handleColorChange}></input>
                     </div>
                     <div className = "new-product-individual-part">
                         <label className = "new-product-label">Price:</label>
-                        <input type = "number" name="price" placeholder="100" value = {price} onChange = {handlePriceChange}></input>
+                        <input type = "number" name="price" autocomplete = "off" placeholder="100" value = {price} onChange = {handlePriceChange}></input>
                     </div>
                     <div className = "new-product-individual-part">
                         <label className = "new-product-label">Img:</label>

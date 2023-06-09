@@ -8,6 +8,7 @@ import { addProductToCart } from "../store/index";
 import { addNotification } from "../store/index";
 import { userRequest } from "../reqMethods";
 import UpdateProduct from "./UpdateProduct";
+import { Link } from "react-router-dom";
 
 function SingleProductShow(){
 
@@ -122,60 +123,68 @@ function SingleProductShow(){
 
 
     <div className= "sp-container">
-    <div className = "sp-wrapper">
 
-      <div className = "sp-image-wrapper">
-        <img className = "sp-img" src = {product.img} />
-      </div>
+      { (product.categories && product.categories.length > 0) && 
+          <Link to = {`/products/${product?.categories[0]}`} className = "back-button-container" >
+            <button className = "back-button"><i class="fa-solid fa-arrow-left"></i></button> 
+          </Link>
+      }
+      
+      
+      <div className = "sp-wrapper">
 
-      <div className = "sp-details-wrapper">
-      <p className = "sp-title"> { product.title } </p>
-      <p className = "sp-description"> { product.description } </p>
-
-
-      <div className = "sp-price-container">
-        <p className = "sp-price"> { (product.price * count).toFixed(2) } ₺ </p>
-        <div className = "sp-quantity-container">
-          <i className = "sp-quantity-change fa-solid fa-minus" onClick = {handleMinusClick} ></i>
-          <p className = "sp-quantity"> { count } </p>
-          <i className = "sp-quantity-change fa-solid fa-plus" onClick = {handlePlusClick}></i>
+        <div className = "sp-image-wrapper">
+          <img className = "sp-img" src = {product.img} />
         </div>
 
-      </div>
+        <div className = "sp-details-wrapper">
+        <p className = "sp-title"> { product.title } </p>
+        <p className = "sp-description"> { product.description } </p>
 
 
-      <div className = "sp-options">
-        {product.color && 
-          <select onChange = { handleColorChange }>
-            <option disabled selected>Colors</option>
-            <option > {product.color} </option>
-          </select>
-        }
-        {product.size && 
-          <select onChange = { handleSizeChange }>
-            <option disabled selected>Size</option>
-            <option  >{product.size}</option>
-          </select>
-        }
-    </div>
-  
-    <div className = "sp-addtocart-container" >
-      <button className = "sp-addtocart-button" onClick = {handleAddCartClick} type = "submit"> Add To Cart  </button>
-      <i className ="sp-heart fa-regular fa-heart fa-2x"></i>
-    </div>
+        <div className = "sp-price-container">
+          <p className = "sp-price"> { (product.price * count).toFixed(2) } ₺ </p>
+          <div className = "sp-quantity-container">
+            <i className = "sp-quantity-change fa-solid fa-minus" onClick = {handleMinusClick} ></i>
+            <p className = "sp-quantity"> { count } </p>
+            <i className = "sp-quantity-change fa-solid fa-plus" onClick = {handlePlusClick}></i>
+          </div>
 
-    { user?.isAdmin &&
-      <div className = "sp-admin-container" >
-        <button className = "sp-admin-delete-product-button" onClick = { handleDeleteProductClick } type = "submit"> Delete this product <i className = "fa-sharp fa-solid fa-trash"></i> </button>
+        </div>
+
+
+        <div className = "sp-options">
+          {product.color && 
+            <select onChange = { handleColorChange }>
+              <option disabled selected>Colors</option>
+              <option > {product.color} </option>
+            </select>
+          }
+          {product.size && 
+            <select onChange = { handleSizeChange }>
+              <option disabled selected>Size</option>
+              <option  >{product.size}</option>
+            </select>
+          }
       </div>
-    }
-    { user?.isAdmin &&
-      <div className = "sp-admin-container" >
-        <button className = "sp-admin-update-product-button" onClick = { handleUpdateProductClick } type = "submit"> Update <i class="fa-sharp fa-solid fa-pen"></i> </button>
+    
+      <div className = "sp-addtocart-container" >
+        <button className = "sp-addtocart-button" onClick = {handleAddCartClick} type = "submit"> Add To Cart  </button>
+        <i className ="sp-heart fa-regular fa-heart fa-2x"></i>
       </div>
-    }
-    </div>
-    </div>
+
+      { user?.isAdmin &&
+        <div className = "sp-admin-container" >
+          <button className = "sp-admin-delete-product-button" onClick = { handleDeleteProductClick } type = "submit"> Delete this product <i className = "fa-sharp fa-solid fa-trash"></i> </button>
+        </div>
+      }
+      { user?.isAdmin &&
+        <div className = "sp-admin-container" >
+          <button className = "sp-admin-update-product-button" onClick = { handleUpdateProductClick } type = "submit"> Update <i class="fa-sharp fa-solid fa-pen"></i> </button>
+        </div>
+      }
+      </div>
+      </div>
     </div>
   )
 }

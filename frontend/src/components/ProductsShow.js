@@ -19,7 +19,7 @@ function ProductsShow( {product} ){
     <div className = "individual-product-wrapper" key={product._id}>
         <div className="product-image-wrapper">
           <Link className = "link" to = {`/product/${product._id}` }>
-            <img className = "product-image" src= {product.img} />
+            <img className = "product-image" src= {product.img} loading="lazy" alt={product.title} />
           </Link>
             <i onClick = { handleHeartClick } className= "heart-icon fa-regular fa-heart fa-2x"></i>
           </div>

@@ -71,10 +71,10 @@ function Login(){
         <form>
         <div className = "login-inputs-wrapper">
           <div className = "login-inputs-container">
-            <input className = "login-input" onChange = { handleUsernameChange } type="text" name = "username" placeholder = "Username" />
+            <input className = "login-input" onChange = { handleUsernameChange } type="text" name = "username" autocomplete = "off" placeholder = "Username" />
           </div>
           <div className = "login-inputs-container">
-            <input className = "login-input" onChange = { handlePasswordChange } type="password" name = "password" placeholder = "Password" />
+            <input className = "login-input" onChange = { handlePasswordChange } type="password" name = "password" autocomplete = "off" placeholder = "Password" />
           </div>
         </div>
 

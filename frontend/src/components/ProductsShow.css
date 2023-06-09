@@ -124,3 +124,12 @@
     height: 150px;
   }
 }
+@media (max-width: 401px){
+  .product-image-wrapper{
+    width: 100%;
+  }
+  .product-image{
+    width: 120px;
+    height: 120px;
+  }
+}

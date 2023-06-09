@@ -159,13 +159,14 @@ function CartProductsList(){
       />;
   });
 
+  console.log(Math.ceil((cart.totalPrice - cart.totalPrice * 0.1)*100));
 
   useEffect(function(){
     const makeRequest = async function(){
       try{
         const response = await userRequest.post("/checkout/payment", {
           tokenId: stripeToken.id, // stripeToken is an object
-          amount: (cart.totalPrice - cart.totalPrice * 0.1)*100,
+          amount: Math.ceil((cart.totalPrice - cart.totalPrice * 0.1)*100),
         });
 
         // Redirect to /success page
@@ -209,8 +210,8 @@ function CartProductsList(){
           image= "https://ahmetserteser.dev/images/image-myself-cropped.png"
           billingAddress
           shippingAddress
-          description={`Total: ${cart.totalPrice - cart.totalPrice * 0.1}$`}
-          amount={(cart.totalPrice - cart.totalPrice * 0.1)*100}
+          description={`Total: ${(cart.totalPrice - cart.totalPrice * 0.1).toFixed(2)}$`}
+          amount={ ((cart.totalPrice - cart.totalPrice * 0.1)*100) }
           token= {onToken}
           stripeKey={KEY}
         >

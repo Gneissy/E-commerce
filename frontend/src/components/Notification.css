@@ -8,7 +8,7 @@ absolutely positioned elements in most browsers. */
 .notification-container { 
   position: fixed; 
   bottom: 50px;
-  right: 50px;
+  left: 50px;
   z-index: 999;
 
   /* allows clicking behind it */
@@ -29,7 +29,7 @@ absolutely positioned elements in most browsers. */
   background-color: #ADD8E6;
   color: #334A52;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-  transform: translateX(30px);
+  transform: translateX(-30px);
   opacity: 0;
   visibility: hidden;
   animation: fade-in 4s linear forwards;
@@ -72,12 +72,12 @@ absolutely positioned elements in most browsers. */
 @media (max-width: 801px){
   .notification-container{
     bottom: 16px;
-    right: 16px;
+    left: 16px;
   }
 }
 @media (max-width: 401px){
   .notification-container{
     bottom: 8px;
-    right: 8px;
+    left: 8px;
   }
 }
