@@ -41,7 +41,7 @@ This is an e-commerce web application built using the MERN stack. It provides a 
 <br>
 
 # See Live
-This app is live on: https://randomgoods.netlify.app/
+This app is live on: https://letmesellyousomething.netlify.app/
 
 <br>
 

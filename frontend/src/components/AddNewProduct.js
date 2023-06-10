@@ -148,7 +148,7 @@ function AddNewProduct(){
                     });
                     if (productCreated.status === 201){
                          // For notification
-                        dispatch(addNotification(`${product.title} is successfully created and saved in database.`));
+                        dispatch(addNotification(`✔ ${product.title} is successfully created and saved in database.`));
                         // Redirect to main page
                         navigate("/");
                     }

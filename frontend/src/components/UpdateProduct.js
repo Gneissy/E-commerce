@@ -89,7 +89,7 @@ function AddNewProduct(){
         });
         if (result.status === 200){
              // For notification
-            dispatch(addNotification(`${product.title} is successfully updated.`));
+            dispatch(addNotification(`✔ ${product.title} is successfully updated.`));
             // Redirect to main page
             navigate("/");
         }
